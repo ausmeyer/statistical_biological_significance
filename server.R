@@ -15,6 +15,7 @@ shinyServer(function(input, output) {
       geom_histogram(binwidth = 0.2, position = "dodge", fill = 'white', alpha = 0.5) + 
       xlim(-5, 15) + 
       labs(x="", y="") +
+      theme_bw() +
       theme(plot.margin = unit(c(2,1,1,1), "lines")) + 
       annotate("text", label = paste("p = ", t.result$p.value, sep = ""), x = Inf, y = Inf, hjust = 1, vjust = -1)
     
