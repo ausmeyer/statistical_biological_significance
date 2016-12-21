@@ -8,8 +8,8 @@ shinyServer(function(input, output) {
   output$distPlot <- renderPlot({
     low.side <- 10/2 - input$diff/2
     high.side <- 10/2 + input$diff/2
-    norm1 <- rnorm(input$healthy.pop.size, mean = low.side, sd = input$healthy.spread)
-    norm2 <- rnorm(input$disease.pop.size, mean = high.side, sd = input$disease.spread)
+    norm1 <- rnorm(input$healthy.pop.size, mean = low.side, sd = input$spread)
+    norm2 <- rnorm(input$disease.pop.size, mean = high.side, sd = input$spread)
     t.result <- t.test(norm1, norm2)
     p <- ggplot(data.frame(data = c(norm1, norm2), Groups = c(rep('No Disease', length(norm1)), rep('Disease', length(norm2)))), aes(data, color = Groups)) + 
       geom_histogram(binwidth = 0.2, position = "dodge", fill = 'white', alpha = 0.5) + 
